@@ -2,7 +2,7 @@
 
 This is my simple template for writing C projects.
 
-# How to run
+## How to run
 
 ```console
 git clone https://github.com/strongleong/ctemplate
@@ -10,7 +10,7 @@ cd ctemplate
 ./build.sh && ./out/ctemplate
 ```
 
-# `./build.sh`
+## `./build.sh`
 
 I use plain bash script `./build.sh` as "build system" with couple flags that may be useful sometimes (all flags that `./build.sh` supports I actually used)
 
@@ -29,7 +29,7 @@ By default this script includes headers from `./lib/` folder, serch every `*.c` 
 
 If you want to chage output file name or compile multiple binaries just change the `./build.sh` script lol.
 
-# `./dap.lua`
+## `./dap.lua`
 
 `dap.lua` file sets up `codelldb` debug adapter  for nvim (see (nvim DAP)[https://github.com/mfussenegger/nvim-dap])
 

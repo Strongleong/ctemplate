@@ -22,30 +22,46 @@ usage() {
   echo "-h --help      Print help"
 }
 
-while [[ $# -gt 0 ]]; do
+handle_arg() {
   case "$1" in
-    "-d"|"--debug") DEBUG=true
+    "${2}d"|"--debug") CFLAGS="$CFLAGS $CDEBUG"
+     shift
+     ;;
+    "${2}p"|"--profile") CFLAGS="$CPROFILE $CFLAGS"
       shift
       ;;
-    "-p"|"--profile") CFLAGS="$CPROFILE $CFLAGS"
-      shift
-      ;;
-    "-s"|"--silent") VERBOSE=false
-      shift
-      ;;
-    "-c"|"--compiler") CC="$2"
-      shift
-      shift
-      ;;
-    "-o"|"--outdir") OUTDIR="$2"
-      shift
-      shift
-      ;;
-    "-h"|"--help") usage;
+    "${2}s"|"--silent") VERBOSE=false
+     shift
+     shift
+     ;;
+    "${2}o"|"--outdir") OUTDIR="$2"
+     shift
+     shift
+     ;;
+    "${2}c"|"--compiler") CC="$2"
+     shift
+     shift
+     ;;
+    "${2}h"|"--help") usage;
       shift
       exit 1;
       ;;
-    "") # pass through
+    ""|"-") # pass through
+      shift
+      ;;
+    *) echo "Unknown command '$1'";
+      usage;
+      exit 1;
+  esac
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -*)
+      for (( i=0; i<${#1}; i++ )); do
+        handle_arg "${1:$i:1}" ''
+      done
+      shift
       ;;
     *) echo "Unknown command '$1'";
       shift

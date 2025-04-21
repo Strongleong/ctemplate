@@ -31,6 +31,6 @@ If you want to chage output file name or compile multiple binaries just change t
 
 ## `./dap.lua`
 
-`dap.lua` file sets up `codelldb` debug adapter  for nvim (see (nvim DAP)[https://github.com/mfussenegger/nvim-dap])
+`dap.lua` file sets up `codelldb` debug adapter  for nvim (see [nvim DAP](https://github.com/mfussenegger/nvim-dap))
 
 If you use `clangd` you can run `bear -- ./build.sh` to generate `compile_commands.json`. If you changed copmiler flags you should regenrate this file.
